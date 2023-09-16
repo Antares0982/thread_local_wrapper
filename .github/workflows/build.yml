@@ -26,4 +26,4 @@ jobs:
       - name: test run
         run: |
           cd build
-          ./test.exe
+          .\TlsWrap.exe

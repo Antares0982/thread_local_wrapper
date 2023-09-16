@@ -11,15 +11,15 @@ void test_body() {
     ptr = std::make_shared<int>(1);
 }
 
-void test_mingw_fail() {
-    thread_local std::shared_ptr<int> ptr = std::make_shared<int>(0);
-    ptr = std::make_shared<int>(1);
-}
+//void test_mingw_fail() {
+//    thread_local std::shared_ptr<int> ptr = std::make_shared<int>(0);
+//    ptr = std::make_shared<int>(1);
+//}
 
 int main() {
     std::thread thread_test(test_body);
     thread_test.join();
-    std::thread thread_mingw_fail(test_mingw_fail);
-    thread_mingw_fail.join();
+//    std::thread thread_mingw_fail(test_mingw_fail);
+//    thread_mingw_fail.join();
     return 0;
 }
