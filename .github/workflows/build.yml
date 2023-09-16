@@ -1,0 +1,29 @@
+name: C++ test build for MinGW-W64
+
+on: 
+  push:
+    branches:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: "test build"
+    runs-on: windows-2019
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: setup MinGW-W64
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
+      - name: build with MinGW-W64 (CMake)
+        run: |
+          mkdir build
+          cd build
+          cmake -G "MinGW Makefiles" ..
+          mingw32-make
+      - name: test run
+        run: |
+          cd build
+          ./test.exe
