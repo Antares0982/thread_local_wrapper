@@ -5,6 +5,7 @@
 #include "tls_wrapper.h"
 #include <memory>
 #include <thread>
+#include <iostream>
 
 void test_body() {
     auto &ptr = Antares::tls_get<std::shared_ptr<int>>();
@@ -21,5 +22,6 @@ int main() {
     thread_test.join();
 //    std::thread thread_mingw_fail(test_mingw_fail);
 //    thread_mingw_fail.join();
+    std::cout << "test success" << std::endl;
     return 0;
 }
